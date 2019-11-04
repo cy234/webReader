@@ -1,18 +1,49 @@
 <template>
   <div id="booklist">
     <div class="addBook book">
-      <input type="file" accept="text/plain,application/msword">
+      <input type="file" accept="text/plain,application/msword" @change="uploadFile">
       <h4 id="details">支持TXT</h4>
     </div>
-    
-      <Book></Book>
-
+      <Book v-for="item of list" :key='item.id' :item='item'></Book>
   </div>
 </template>
 <script>
 import Book from './Book'
+import indexedDB from '@/indexedDB/indexedDB'
 export default {
   name: 'BookList',
+  data () {
+    return {
+      list: []
+    }
+  },
+  mounted () {
+    let _this = this;
+    indexedDB.openDB('mybooks', 3, {
+      name: 'books',
+      key: 'name'
+    }, function (db) {
+      indexedDB.getAllData(db, 'books', function (db) {
+        _this.list = [...db];
+      })
+    })
+  },
+  methods: {
+    uploadFile (e) {
+      let file = e.target.files[0];
+      console.log(file)
+      let _this = this;
+      indexedDB.openDB('mybooks', 3, {
+        name: 'books',
+        key: 'name'
+      }, function (db) {
+        let bookdb = db;
+        indexedDB.addData(bookdb, 'books', file, function () {
+          _this.list.push(file);
+        });
+      })
+    }
+  },
   components: {
     Book
   }
@@ -53,7 +84,6 @@ h4 {
   margin-right: 110px;
   margin-bottom: 40px;
 }
-
 .addBook input{
   opacity: 0;
   width: 120px;
