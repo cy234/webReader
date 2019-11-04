@@ -1,7 +1,7 @@
 <template>
-  <router-link tag='div' class="book" :to="'/bookdetail/'+item.name.slice(0,-4)">
+  <router-link tag='div' class="book" :to="'/bookdetail/'+name">
     <img class="bookimage" src="@/assets/image/bookcover.jpg" :onerror="errorImage" width="120" height="160">
-    <h4 class="details">{{item.name.slice(0,-4)}}</h4>
+    <h4 class="details">{{item.slice(0,-4)}}</h4>
   </router-link>
 </template>
 
@@ -11,7 +11,8 @@ export default {
   props: ['item'],
   data() {
     return {
-      errorImage: "this.src='@/assets/image/bookcover.jpg'"
+      errorImage: "this.src='@/assets/image/bookcover.jpg'",
+      name: this.item
     }
   }
 }

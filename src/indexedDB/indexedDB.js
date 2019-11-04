@@ -64,14 +64,19 @@ export default {
       }
     };
   },
-  // 获取全部数据
-  getAllData: function (db, storename, callback) {
+  // 获取所有的key
+  getAllData: function (db, storename, key, callback) {
     var store = db.transaction(storename, 'readwrite').objectStore(storename);
     let req = store.getAll();
     req.onsuccess = function (event) {
       let db = event.target.result;
+      let len = db.length;
+      let result = [];
       if (callback && (typeof callback === 'function')) {
-        callback(db);
+        for (let i = 0; i < len; i++) {
+          result.push(db[i][key]);
+        }
+        callback(result);
       }
     }
   }

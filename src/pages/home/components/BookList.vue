@@ -4,7 +4,7 @@
       <input type="file" accept="text/plain,application/msword" @change="uploadFile">
       <h4 id="details">支持TXT</h4>
     </div>
-      <Book v-for="item of list" :key='item.id' :item='item'></Book>
+      <Book v-for="item of list" :key='item' :item='item'></Book>
   </div>
 </template>
 <script>
@@ -23,8 +23,8 @@ export default {
       name: 'books',
       key: 'name'
     }, function (db) {
-      indexedDB.getAllData(db, 'books', function (db) {
-        _this.list = [...db];
+      indexedDB.getAllData(db, 'books', 'name', function (result) {
+        _this.list = [...result];
       })
     })
   },
