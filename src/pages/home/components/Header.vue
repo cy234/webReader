@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input @keyup.enter="searchResourse" type="text" id="search" v-model="inputVal" placeholder="搜索资源">
+    <input @keyup.enter='searchResourse' type='text' id='search' v-model='inputVal' placeholder='搜索资源'>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
   height: 200px;
 }
 #search{
-  background: #fff url("~@/assets/image/search.png") 8px 5px no-repeat;
+  background: #fff url('~@/assets/image/search.png') 8px 5px no-repeat;
   background-size: 20px;
   width: 180px;
   height: 30px;
@@ -36,5 +36,8 @@ export default {
   margin: 10px 80px;
   padding: 0 10px 0 30px;
   font-size: 13px;
+}
+#search:focus{
+  border-color: #42b983;
 }
 </style>

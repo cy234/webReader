@@ -1,14 +1,14 @@
 <template>
   <div>
     <header>
-      <router-link tag='div' to="/" replace>
-        <img class="back" src='~@/assets/image/back.png' alt="back">
+      <router-link tag='div' to='/' replace>
+        <img class='back' src='~@/assets/image/back.png' alt='back'>
       </router-link>
       <h2>{{name.slice(0,-4)}}</h2>
-      <div class="change" @mouseover='show' @mouseout='hide'>
+      <div class='change' @mouseover='show' @mouseout='hide'>
        <span>{{format}}</span>
-        <img class="down" src="~@/assets/image/down.png" alt="">
-        <ul v-show="see" @mouseover='show' @mouseout='hide'>
+        <img class='down' src='~@/assets/image/down.png' alt=''>
+        <ul v-show='see' @mouseover='show' @mouseout='hide'>
           <li v-for='item of formatlist' :key='item' @click='select(item)'>{{item}}</li>
         </ul>
       </div>
@@ -39,30 +39,30 @@ export default {
     this.loadfile();
   },
   methods: {
-    show: function () {
+    show() {
       this.see = true;
     },
-    hide: function () {
+    hide() {
       this.see = false;
     },
-    select: function (value) {
+    select(value) {
       this.format = value;
       this.loadfile();
     },
-    loadfile: function () {
-    var _this = this;
-    indexedDB.openDB('mybooks', 3, {
-      name: 'books',
-      key: 'name'
-    }, function (db) {
-      indexedDB.getData(db, 'books', _this.name, function (result) {
-       let reader = new FileReader();
-       reader.readAsText(result, _this.format);
-       reader.onload = function (e) {
-        _this.txt = e.target.result;
-       }
+    loadfile() {
+      let _this = this;
+      indexedDB.openDB('mybooks', 3, {
+        name: 'books',
+        key: 'name'
+      }, function (db) {
+        indexedDB.getData(db, 'books', _this.name, function (result) {
+          let reader = new FileReader();
+          reader.readAsText(result, _this.format);
+          reader.onload = function (e) {
+            _this.txt = e.target.result;
+          }
+        })
       })
-    })
     }
   }
 }
@@ -125,4 +125,3 @@ pre {
   margin: 100px auto;
 }
 </style>
-

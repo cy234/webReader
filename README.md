@@ -1,6 +1,6 @@
 # webreader
 
-> A Vue.js project 
+> A Vue.js project about reading book online
 
 ## Build Setup
 

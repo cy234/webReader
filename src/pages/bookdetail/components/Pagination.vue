@@ -1,9 +1,9 @@
 <template>
   <div>
-    <ul class="pagechange">
-      <li class="inputpage"><input type="number" min="1" :max='pages'><span>/{{pages}}</span></li>
-      <li><img src="~@/assets/image/lastpage.png" alt="上一页"></li>
-      <li><img src="~@/assets/image/nextpage.png" alt="下一页"></li>
+    <ul class='pagechange'>
+      <li class='inputpage'><input type='number' min='1' :max='pages'><span>/{{pages}}</span></li>
+      <li><img src='~@/assets/image/lastpage.png' alt='上一页'></li>
+      <li><img src='~@/assets/image/nextpage.png' alt='下一页'></li>
     </ul>
   </div>
 </template>
@@ -11,7 +11,7 @@
 export default {
   data () {
     return {
-       pages: 12
+      pages: 12
     }
   }
 }

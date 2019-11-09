@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header @change="handleSearch"></Header>
+    <Header @change='handleSearch'></Header>
     <BookList></BookList>
   </div>
 </template>

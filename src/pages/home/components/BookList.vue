@@ -1,10 +1,10 @@
 <template>
-  <div id="booklist">
-    <div class="addBook book">
-      <input type="file" accept="text/plain,application/msword" @change="uploadFile">
-      <h4 id="details">支持TXT</h4>
+  <div id='booklist'>
+    <div class='addBook book'>
+      <input type='file' accept='text/plain,application/msword' @change='uploadFile'>
+      <h4 id='details'>支持TXT</h4>
     </div>
-      <Book v-for="item of list" :key='item' :item='item'></Book>
+      <Book v-for='item of list' :key='item' :item='item' :list='list'></Book>
   </div>
 </template>
 <script>
@@ -31,7 +31,6 @@ export default {
   methods: {
     uploadFile (e) {
       let file = e.target.files[0];
-      console.log(file)
       let _this = this;
       indexedDB.openDB('mybooks', 3, {
         name: 'books',
@@ -39,7 +38,7 @@ export default {
       }, function (db) {
         let bookdb = db;
         indexedDB.addData(bookdb, 'books', file, function () {
-          _this.list.push(file);
+          _this.list.push(file.name);
         });
       })
     }
@@ -60,7 +59,7 @@ export default {
   flex-wrap: wrap;
 }
 .addBook {
-  background: #e8e8e8 url("~@/assets/image/add.png") 32px 55px no-repeat;
+  background: #e8e8e8 url('~@/assets/image/add.png') 32px 55px no-repeat;
   position: relative;
 }
 h4 {
