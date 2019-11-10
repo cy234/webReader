@@ -1,6 +1,15 @@
 # webreader
 
-> A Vue.js project about reading book online
+> A Vue.js project about reading txt online
+
+####  Project Detail
+> homepage: upload your books (.txt) and show your booklist
+
+![image](https://github.com/cy234/webReader/blob/master/src/assets/image/projectimg/home.jpg)
+
+> detail: show one of your books 、change file code if necessary and change page (up、down、input)
+
+![image](https://github.com/cy234/webReader/blob/master/src/assets/image/projectimg/detail.jpg)
 
 ## Build Setup
 
