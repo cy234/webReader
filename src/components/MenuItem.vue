@@ -13,7 +13,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 li {
   padding: 2px 14px;
 }
