@@ -6,16 +6,16 @@
 > homepage: upload your books (.txt) and show your booklist
 
 
-<div align="center" style="box-shadow: #ccc 0px 5px 10px;">
-  <img src="https://github.com/cy234/webReader/blob/master/src/assets/image/projectimg/home.jpg" width="500"/>
+<div align="center">
+  <img src="https://github.com/cy234/webReader/blob/master/src/assets/image/projectimg/home.jpg" style="box-shadow: #ccc 0px 5px 10px;"/>
 </div>
 
 
 > detail: show one of your books 、change file code if necessary and change page (up、down、input)
 
 
-<div align="center" style="box-shadow: #ccc 0px 5px 10px;">
-  <img src="https://github.com/cy234/webReader/blob/master/src/assets/image/projectimg/detail.jpg" width="500"/>
+<div align="center">
+  <img src="https://github.com/cy234/webReader/blob/master/src/assets/image/projectimg/detail.jpg" style="box-shadow: #ccc 0px 5px 10px;"/>
 </div>
 
 
