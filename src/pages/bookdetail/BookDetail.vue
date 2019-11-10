@@ -14,7 +14,7 @@
       </div>
     </header>
     <pre>{{txt}}</pre>
-    <Pagination></Pagination>
+    <Pagination :pages='pages' :curpage='curpage' @func='getPage'></Pagination>
   </div>
 </template>
 <script>
@@ -28,15 +28,22 @@ export default {
       name: '',
       format: 'gb2312',
       formatlist: ['gb2312', 'utf-8'],
-      see: false
+      see: false,
+      curpage: 1,
+      pages: 1
     }
   },
   components: {
     Pagination
   },
+  watch: {
+    curpage(val) {
+      this.loadfile(val);
+    }
+  },
   mounted () {
     this.name = this.$route.params.name;
-    this.loadfile();
+    this.loadfile(this.curpage);
   },
   methods: {
     show() {
@@ -49,7 +56,7 @@ export default {
       this.format = value;
       this.loadfile();
     },
-    loadfile() {
+    loadfile(p) {
       let _this = this;
       indexedDB.openDB('mybooks', 3, {
         name: 'books',
@@ -59,10 +66,18 @@ export default {
           let reader = new FileReader();
           reader.readAsText(result, _this.format);
           reader.onload = function (e) {
-            _this.txt = e.target.result;
+            const txt = e.target.result;
+            const reg = /(\r\n)/g;
+            const len = txt.match(reg).length;
+            _this.pages = Math.ceil(len / 17);
+            _this.txt = txt.split(reg).slice((p - 1) * 34, p * 34).join('');
           }
         })
       })
+    },
+    getPage(value) {
+      let _this = this;
+      _this.curpage = value;
     }
   }
 }
